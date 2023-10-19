@@ -1,0 +1,164 @@
+body{
+    background-color: #163052;
+}
+
+/*#imgCus{*/
+/*    position: absolute;*/
+/*    width: 30vw;*/
+/*    left: 30vw;*/
+/*    top: 12vh;*/
+/*}*/
+
+/*#tb1{*/
+/*    position: absolute;*/
+/*    !*top: 50vh;*!*/
+/*    bottom: 0;*/
+/*    width: 74vw;*/
+/*    right: 1vw;*/
+/*}*/
+
+/*#form1{*/
+/*    position: absolute;*/
+/*    bottom: 1vw;*/
+/*    left: 1vw;*/
+/*    width: 18vw;*/
+/*}*/
+
+#frame{
+    position: relative;
+    width: 23vw;
+    height: 80vh;
+    border: 1px solid white;
+    padding: 0.5vw;
+    top: 10vh;
+}
+
+#itemBtn>button{
+    position: relative;
+    left: 0;
+    right: 0;
+    margin: auto;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+/*#divBtn{*/
+/*    position: absolute;*/
+/*    !*display: inline;*!*/
+/*    width: fit-content;*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*    margin: auto;*/
+/*}*/
+
+#divTb2{
+    position: relative;
+    top: 18vh;
+    left: 2vw;
+}
+
+#itemForm{
+    position: relative;
+    top: 10vh;
+    padding: 0;
+}
+
+button{
+    /*padding: 5vw;*/
+}
+
+#code2{
+    color: white;
+    background-color: transparent;
+}
+
+#item2{
+    color: white;
+    background-color: transparent;
+}
+
+#price2{
+    color: white;
+    background-color: transparent;
+}
+
+#qty2{
+    color: white;
+    background-color: transparent;
+}
+
+label{
+    color: white;
+    background-color: transparent;
+}
+
+@media all and (max-width: 768px){
+    #imgItem{
+        display: none;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/*body{*/
+/*    background-color: #163052;*/
+/*}*/
+
+/*#imgCus{*/
+/*    position: absolute;*/
+/*    left: 30vw;*/
+/*    top: 12vh;*/
+/*}*/
+
+/*#tb1{*/
+/*    position: absolute;*/
+/*    !*top: 65vh;*!*/
+/*    bottom: 0;*/
+/*    width: 75vw;*/
+/*}*/
+
+/*#form1{*/
+/*    position: absolute;*/
+/*    bottom: 1vw;*/
+/*    right: 6vw;*/
+/*    width: 18vw;*/
+/*}*/
+
+/*#frame{*/
+/*    position: relative;*/
+/*    width: 23vw;*/
+/*    height: 80vh;*/
+/*    border: 1px solid white;*/
+/*    padding: 1.5vw;*/
+/*    padding-top: 7vh;*/
+/*}*/
+
+/*.form-floating{*/
+/*    width: 15vw;*/
+/*    height: 7vh;*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*    margin: auto;*/
+/*}*/
+
+
+/*button{*/
+/*    position: relative;*/
+/*    margin-top: 1vh;*/
+/*}*/
+
+/*#divBtn{*/
+/*    position: absolute;*/
+/*    !*display: inline;*!*/
+/*    width: fit-content;*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*    margin: auto;*/
+/*}*/

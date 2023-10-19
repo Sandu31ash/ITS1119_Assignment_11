@@ -1,0 +1,164 @@
+body{
+    background-color: #163051;
+    overflow-x: hidden;
+}
+
+form{
+    position: relative;
+    top: 8vh;
+    /*padding-left: 5vw;*/
+    /*padding-right: 5vw;*/
+}
+
+#row1{
+    height: 25vh;
+}
+
+#tb3{
+    position: relative;
+    bottom: 0;
+    margin-top: 7vh;
+}
+
+.form-control{
+    background-color: transparent;
+    color: white;
+}
+
+#total{
+    color: white;
+    background-color: transparent;
+    font-size: 25px;
+    font-family: cursive;
+}
+
+#tot{
+    color: white;
+    font-size: 2vw;
+    position: relative;
+    left: 5vw;
+}
+
+label{
+    color: white;
+    background-color: transparent;
+}
+
+@media all and (max-width: 1200px){
+    #imgOrder{
+        position: absolute;
+        left: 635px;
+    }
+}
+
+@media all and (max-width: 992px){
+    #imgOrder{
+        display: none;
+    }
+}
+
+/*#floatingId{*/
+/*    background-color: transparent;*/
+/*}*/
+
+/*#floatingName{*/
+/*    background-color: transparent;*/
+/*}*/
+
+/*#floatingContact{*/
+/*    background-color: transparent;*/
+/*}*/
+
+/*#floatingAdd{*/
+/*    background-color: transparent;*/
+/*}*/
+
+
+
+
+/*.row{*/
+/*    position: relative;*/
+/*    top: 100vh;*/
+/*}*/
+
+/*input{*/
+/*    height: 25vh;*/
+/*}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*!*#imgCus{*!*/
+/*!*    position: absolute;*!*/
+/*!*    left: 30vw;*!*/
+/*!*    top: 12vh;*!*/
+/*!*}*!*/
+
+/*#tb1{*/
+/*    position: absolute;*/
+/*    !*top: 65vh;*!*/
+/*    bottom: 0;*/
+/*}*/
+
+/*#form1{*/
+/*    position: absolute;*/
+/*    !*right: 6vw;*!*/
+/*    top: 11vh;*/
+/*    left: 1vw;*/
+/*    display: inline-flex;*/
+/*}*/
+
+/*#frame1{*/
+/*    position: absolute;*/
+/*    width: 43vw;*/
+/*    height: 50vh;*/
+/*    border: 1px solid white;*/
+/*    top: 11vh;*/
+/*    left: 0.5vw;*/
+/*    padding: 1vw;*/
+/*}*/
+
+/*#frame2{*/
+/*    position: absolute;*/
+/*    width: 37vw;*/
+/*    height: 50vh;*/
+/*    border: 1px solid white;*/
+/*    top: 11vh;*/
+/*    left: 44vw;*/
+/*    padding: 1vw;*/
+/*}*/
+
+/*#frame3{*/
+/*    position: absolute;*/
+/*    width: 18vw;*/
+/*    height: 50vh;*/
+/*    border: 1px solid white;*/
+/*    top: 11vh;*/
+/*    right: 0.5vw;*/
+/*    padding: 1vw;*/
+/*}*/
+
+/*.form-floating{*/
+/*    !*width: 15vw;*!*/
+/*    !*height: 7vh;*!*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*    margin: auto;*/
+/*}*/
+
+/*button{*/
+/*    position: relative;*/
+/*    left: 2vw;*/
+/*}*/

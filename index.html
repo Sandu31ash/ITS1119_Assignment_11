@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lavazza - The Italian Espresso since 1895 | POS System</title>
+    <link rel="stylesheet" href="./assests/bootstrap/bootstrap-5.3.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assests/css/normalize.css">
+    <link rel="stylesheet" href="assests/css/style.css">
+    <link rel="stylesheet" href="assests/css/style_customer.css">
+    <link rel="stylesheet" href="assests/css/style_item.css">
+    <link rel="stylesheet" href="assests/css/style_order.css">
+    <link rel="icon" type="image/x-icon" href="/assests/images/favicon.ico">
+    <meta name="viewport" content="width-device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+</head>
+<body>
+
+    <header id="header1">
+        <nav class="navbar bg-body-tertiary fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#" style="font-weight: bold; color: #163052; font-family: 'Anton', sans-serif; font-size: x-large" >
+                    <img src="/assests/images/lavazza.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                    LAVAZZA
+                </a>
+
+                <ul class="nav nav-underline">
+                    <li class="nav-item">
+<!--                        Home-->
+                        <a class="nav-link" aria-current="page" id="homeSec">Home</a>
+                    </li>
+                    <li class="nav-item">
+<!--                        Customer-->
+                        <a class="nav-link" id="cusSec">Customer</a>
+                    </li>
+                    <li class="nav-item">
+<!--                        Item-->
+                        <a class="nav-link" id="itemSec">Item</a>
+                    </li>
+                    <li class="nav-item">
+<!--                        Order-->
+                        <a class="nav-link" id="orderSec">Order</a>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+    </header>
+
+    <div class="container" id="con1">
+
+        <!--    <p class="h2">Home</p>-->
+        <img src="./assests/images/home.png" class="img-fluid" alt="..." id="imghome">
+
+        <a><button type="button" class="btn btn-outline-light" id="btnCus" data-aos="flip-left"
+                                        data-aos-easing="ease-out-cubic"
+                                        data-aos-duration="1000">MANAGE CUSTOMER</button></a>
+
+        <a><button type="button" class="btn btn-outline-light" id="btnItem" data-aos="flip-left"
+                                    data-aos-easing="ease-out-cubic"
+                                    data-aos-duration="2000">MANAGE ITEM</button></a>
+
+        <a><button type="button" class="btn btn-outline-light" id="btnOrder" data-aos="flip-left"
+                                     data-aos-easing="ease-out-cubic"
+                                     data-aos-duration="3000">MANAGE ORDER</button></a>
+
+        <!--    <button id="btn1"style="position:relative; top: 0; bottom: 0; margin: auto; z-index: 999999;">Btn1</button>-->
+
+        <!--    <img src="./assests/images/lavazza.png" alt="" id="img1">-->
+    </div>
+
+
+<!--    /////////////////////////////Customer////////////////////////////////-->
+
+    <div class="container" id="con2">
+
+
+        <img src="assests/images/watermark.png" alt="" class="water">
+
+        <img src="assests/images/cup.png" alt="" style="position: absolute; z-index: -10; top: 45vh; left: 50vw; opacity: 100%" id="imgCus">
+
+        <div class="row">
+            <!--        <div id="frame">-->
+            <div class="col col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+
+                <form action="" method="post" target="_blank" id="cusForm">
+                    <br><br>
+                    <div class="form-floating mb-5">
+                        <input type="text" class="form-control" id="cusId1" placeholder="ID" style="color: white">
+                        <label for="cusId1">Customer ID</label>
+                    </div>
+                    <div class="form-floating mb-5">
+                        <input type="text" class="form-control" id="name1" placeholder="Name">
+                        <label for="name1">Name</label>
+                    </div>
+                    <div class="form-floating mb-5">
+                        <input type="tel" class="form-control" id="contact" placeholder="Contact">
+                        <label for="contact">Contact</label>
+                    </div>
+                    <div class="form-floating mb-5">
+                        <input type="text" class="form-control" id="address" placeholder="Address">
+                        <label for="address">Address</label>
+                    </div>
+                    <div id="cusBtn" class="mt-3 mb-4">
+                        <button type="reset" class="btn btn-outline-light btn-sm">Reset</button>
+                        <button type="button" class="btn btn-outline-light btn-sm">Delete</button>
+                        <button type="button" class="btn btn-outline-light btn-sm">Update</button>
+                        <button type="button" class="btn btn-outline-light btn-sm" id="btnSave">Save</button>
+                    </div>
+                </form>
+                <!--            </div>-->
+            </div>
+            <div id="cusTb" class="col col-xxl-8 col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
+                <table class="table table-bordered table-hover table-striped table-primary" id="tb1">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Contact</th>
+                        <th scope="col">Address</th>
+                    </tr>
+                    </thead>
+                    <tbody id="cus_tBody">
+                    <tr>
+                        <td scope="row">C001</td>
+                        <td>Mario</td>
+                        <td>00395458752361</td>
+                        <td>Torino</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">C002</td>
+                        <td>Pinto</td>
+                        <td>00393875846512</td>
+                        <td>Alba</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">C003</td>
+                        <td>Luca</td>
+                        <td>00393125465875</td>
+                        <td>Milano</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">C004</td>
+                        <td>Antonio</td>
+                        <td>00394258765422</td>
+                        <td>Elba</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+<!--    /////////////////////Item/////////////////////////////-->
+
+
+    <div class="container" id="con3">
+
+        <img src="assests/images/watermark.png" alt="" class="water">
+
+        <img src="assests/images/item.png" alt="" style="position: absolute; z-index: -10; top: 62vh; left: 55vw; opacity: 100%;" id="imgItem">
+
+        <div class="row">
+            <!--        <div id="frame">-->
+            <div class="col col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+
+                <form action="" method="post" target="_blank" id="itemForm">
+                    <br><br>
+                    <div class="form-floating mb-5">
+                        <input type="text" class="form-control" id="code2" placeholder="Item Code">
+                        <label for="code2">Item Code</label>
+                    </div>
+                    <div class="form-floating mb-5">
+                        <input type="text" class="form-control" id="item2" placeholder="Item">
+                        <label for="item2">Item</label>
+                    </div>
+                    <div class="form-floating mb-5">
+                        <input type="number" class="form-control" id="price2" placeholder="Unit Price">
+                        <label for="price2">Unit Price</label>
+                    </div>
+                    <div class="form-floating mb-5">
+                        <input type="number" class="form-control" id="qty2" placeholder="Qty">
+                        <label for="qty2">Qty</label>
+                    </div>
+                    <div id="itemBtn" class="mt-3 mb-4">
+                        <button type="reset" class="btn btn-outline-light btn-sm">Reset</button>
+                        <button type="button" class="btn btn-outline-light btn-sm">Delete</button>
+                        <button type="button" class="btn btn-outline-light btn-sm">Update</button>
+                        <button type="button" class="btn btn-outline-light btn-sm" id="btnSave2">Save</button>
+                    </div>
+                </form>
+                <!--            </div>-->
+            </div>
+            <div id="divTb2" class="col col-xxl-8 col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
+                <table class="table table-bordered table-hover table-striped table-primary">
+                    <thead>
+                    <tr>
+                        <th scope="col">Item Code</th>
+                        <th scope="col">Item</th>
+                        <th scope="col">Unit Price</th>
+                        <th scope="col">Qty</th>
+                    </tr>
+                    </thead>
+                    <tbody id="item_tBody">
+                    <tr>
+                        <td scope="row">I001</td>
+                        <td>Latte</td>
+                        <td>2000</td>
+                        <td>500</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">I002</td>
+                        <td>Cappucino</td>
+                        <td>1500</td>
+                        <td>450</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">I003</td>
+                        <td>Cafe</td>
+                        <td>1000</td>
+                        <td>800</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">I004</td>
+                        <td>Mocha</td>
+                        <td>2000</td>
+                        <td>480</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+<!--    ///////////////////////Order/////////////////////////-->
+    <br>
+    <div class="container" id="con4">
+
+        <img src="assests/images/watermark.png" alt="" class="water">
+
+        <img src="assests/images/order.jpg" alt="" style="position: absolute; z-index: -10; top: 8vh; right: 1px; opacity: 40%; width: 378px" id="imgOrder">
+    <div class="row" id="orderRow">
+        <!--        <div id="frame">-->
+        <div class="col col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+            <form action="" method="post" target="_blank" id="orderForm">
+                <h6 style="color: white">Invoice details</h6>
+                <div class="form-floating mb-2">
+                    <input type="text" class="form-control" id="code3" placeholder="Order code">
+                    <label for="code3">Order Code</label>
+                </div>
+                <div class="form-floating mb-2">
+                    <input type="date" class="form-control" id="date" placeholder="Date">
+                    <label for="date">Date</label>
+                </div>
+                <div class="form-floating mb-2">
+                    <input type="text" class="form-control" id="cusId3" placeholder="Customer ID">
+                    <label for="cusId3">Customer ID</label>
+                </div>
+                <div class="form-floating mb-2">
+                    <input type="text" class="form-control" id="cusName3" placeholder="Customer Name">
+                    <label for="cusName3">Customer Name</label>
+                </div>
+                <div id="orderBtn" class="mt-3 mb-4">
+                    <button type="reset" class="btn btn-outline-light btn-sm">Reset</button>
+                    <button type="button" class="btn btn-outline-light btn-sm">Delete</button>
+                    <button type="button" class="btn btn-outline-light btn-sm">Update</button>
+                    <button type="button" class="btn btn-outline-light btn-sm" id="btnSave3">Save</button>
+                </div>
+            </form>
+
+            <!--            </div>-->
+        </div>
+
+
+        <div class="col col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+
+            <form action="" method="post" target="_blank">
+                <h6 style="color: white">Items</h6>
+                <div class="form-floating mb-2">
+                    <input type="text" class="form-control form-control-sm" id="iCode" placeholder="Item Code">
+                    <label for="iCode">Item Code</label>
+                </div>
+                <div class="form-floating mb-2">
+                    <input type="text" class="form-control" id="item3" placeholder="Item">
+                    <label for="item3">Item</label>
+                </div>
+                <div class="form-floating mb-2">
+                    <input type="number" class="form-control form-control-sm" id="price3" placeholder="Unit Price">
+                    <label for="price3">Unit Price</label>
+                </div>
+                <div class="form-floating mb-2">
+                    <input type="number" class="form-control form-control-sm" id="qty3" placeholder="Qty">
+                    <label for="qty3">Qty</label>
+                </div>
+                <div id="orderBtnCart" class="mt-3 mb-4">
+                    <button type="reset" class="btn btn-outline-light btn-sm">Reset</button>
+                    <button type="button" class="btn btn-outline-light btn-sm">Add to cart</button>
+                </div>
+
+            </form>
+            <!--            </div>-->
+        </div>
+
+        <div class="col col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+
+            <form action="" method="post" target="_blank">
+
+                <div class="mb-3 row">
+                    <label for="tot" class="col-sm-2 col-form-label" id="total">Total:</label>
+                    <div class="col-sm-10">
+                        <input type="number" readonly class="form-control-plaintext" id="tot" value="">
+                    </div>
+                </div>
+
+                <!--                <input class="form-control form-control-plaintext" id="total" type="text" value="Total : " aria-label="readonly input example" readonly>-->
+                <!--                <input class="form-control form-control-plaintext" id="totl" type="text" value="Total : " aria-label="readonly input example" readonly>-->
+                <!--                <h4 style="color: white">TOTAL :</h4>-->
+
+                <div class="form-floating mb-2">
+                    <input type="text" class="form-control form-control-sm" id="cash" placeholder="Cash">
+                    <label for="cash">Cash</label>
+                </div>
+                <div class="form-floating mb-2">
+                    <input type="text" class="form-control" id="balance" placeholder="Balance">
+                    <label for="balance">Balance</label>
+                </div>
+                <div id="orderBtnPur" class="mt-3 mb-4">
+                    <button type="reset" class="btn btn-outline-light btn-sm">Reset</button>
+                    <button type="button" class="btn btn-outline-light btn-sm">Purchase</button>
+                </div>
+            </form>
+            <!--            </div>-->
+        </div>
+
+    </div>
+
+
+    <table class="table table-bordered table-hover table-striped table-primary" id="tb3">
+        <thead>
+        <tr>
+            <th scope="col">Item code</th>
+            <th scope="col">Item</th>
+            <th scope="col">Unit price</th>
+            <th scope="col">Qty</th>
+            <th scope="col">Tot</th>
+        </tr>
+        </thead>
+        <tbody id="order_tBody">
+        <tr>
+            <th scope="row">I001</th>
+            <td>Latte</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            <td>2500</td>
+        </tr>
+        <tr>
+            <th scope="row">I002</th>
+            <td>Cappucino</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+            <td>1800</td>
+        </tr>
+        <tr>
+            <th scope="row">I003</th>
+            <td>Cafe</td>
+            <td>USA</td>
+            <td>@twitter</td>
+            <td>1500</td>
+        </tr>
+        <!--    <tr>-->
+        <!--        <th scope="row">I004</th>-->
+        <!--        <td>Mocha</td>-->
+        <!--        <td>USA</td>-->
+        <!--        <td>@twitter</td>-->
+        <!--        <td>2000</td>-->
+        <!--    </tr>-->
+        </tbody>
+    </table>
+
+    </div>
+    </div>
+
+
+<!--////////////Link Js dependencies//////////-->
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!--    <script src="assests/js/snow3d.js"></script>-->
+    <script src="./assests/js/lib/jquery.min.js"></script>
+
+
+<!--////////////Link Controllers///////////-->
+
+    <script type="module" src="controller/CustomerController.js"></script>
+    <script type="module" src="controller/ItemController.js"></script>
+    <script type="module" src="controller/OrderController.js"></script>
+
+
+<!--//////////////////Manage Navigations////////////////////-->
+
+    <script>
+        AOS.init();
+
+        $("#con2").css("display", "none");
+        $("#con3").css("display", "none");
+        $("#con4").css("display", "none");
+
+        $(".nav-link").eq(0).css("color" , "black");
+        $(".nav-link").eq(0).css("font-weight" , "bold");
+
+        $("#homeSec").on('click' , ()=>{
+            $("#con2").css("display", "none");
+            $("#con3").css("display", "none");
+            $("#con4").css("display", "none");
+            $("#con1").css("display", "block");
+
+            $(".nav-link").eq(0).css("color" , "black");
+            $(".nav-link").eq(0).css("font-weight" , "bold");
+
+            $(".nav-link").eq(1).css("color" , "blue");
+            $(".nav-link").eq(1).css("font-weight" , "normal");
+
+            $(".nav-link").eq(2).css("color" , "blue");
+            $(".nav-link").eq(2).css("font-weight" , "normal");
+
+            $(".nav-link").eq(3).css("color" , "blue");
+            $(".nav-link").eq(3).css("font-weight" , "normal");
+        });
+
+        $("#cusSec").on('click' , ()=>{
+            $("#con1").css("display", "none");
+            $("#con3").css("display", "none");
+            $("#con4").css("display", "none");
+            $("#con2").css("top", "0");
+            $("#con2").css("display", "block");
+
+            $(".nav-link").eq(0).css("color" , "blue");
+            $(".nav-link").eq(0).css("font-weight" , "normal");
+
+            $("#cusSec").css("color" , "black");
+            $("#cusSec").css("font-weight" , "bold");
+            $("#cusSec").css("color" , "black");
+
+            $(".nav-link").eq(2).css("color" , "blue");
+            $(".nav-link").eq(2).css("font-weight" , "normal");
+
+            $(".nav-link").eq(3).css("color" , "blue");
+            $(".nav-link").eq(3).css("font-weight" , "normal");
+        });
+
+        $("#itemSec").on('click' , ()=>{
+            $("#con1").css("display", "none");
+            $("#con2").css("display", "none");
+            $("#con4").css("display", "none");
+            $("#con3").css("top", "0");
+            $("#con3").css("display", "block");
+
+            $(".nav-link").eq(0).css("color" , "blue");
+            $(".nav-link").eq(0).css("font-weight" , "normal");
+
+            $(".nav-link").eq(1).css("color" , "blue");
+            $(".nav-link").eq(1).css("font-weight" , "normal");
+
+            $(".nav-link").eq(2).css("color" , "black");
+            $(".nav-link").eq(2).css("font-weight" , "bold");
+
+            $(".nav-link").eq(3).css("color" , "blue");
+            $(".nav-link").eq(3).css("font-weight" , "normal");
+        });
+
+        $("#orderSec").on('click' , ()=>{
+            $("#con1").css("display", "none");
+            $("#con2").css("display", "none");
+            $("#con3").css("display", "none");
+            $("#con4").css("top", "0");
+            $("#con4").css("display" , "block");
+
+            $(".nav-link").eq(0).css("color" , "blue");
+            $(".nav-link").eq(0).css("font-weight" , "normal");
+
+            $(".nav-link").eq(1).css("color" , "blue");
+            $(".nav-link").eq(1).css("font-weight" , "normal");
+
+            $(".nav-link").eq(2).css("color" , "blue");
+            $(".nav-link").eq(2).css("font-weight" , "normal");
+
+            $(".nav-link").eq(3).css("color" , "black");
+            $(".nav-link").eq(3).css("font-weight" , "bold");
+
+        });
+
+        //////////////////////////////////////////
+
+        $("#btnCus").on('click', ()=>{
+            $("#con1").css("display", "none");
+            $("#con3").css("display", "none");
+            $("#con4").css("display", "none");
+            $("#con2").css("top", "0");
+            $("#con2").css("display", "block");
+
+            $(".nav-link").eq(0).css("color" , "blue");
+            $(".nav-link").eq(0).css("font-weight" , "normal");
+
+            $(".nav-link").eq(1).css("color" , "black");
+            $(".nav-link").eq(1).css("font-weight" , "bold");
+
+            $(".nav-link").eq(2).css("color" , "blue");
+            $(".nav-link").eq(2).css("font-weight" , "normal");
+
+            $(".nav-link").eq(3).css("color" , "blue");
+            $(".nav-link").eq(3).css("font-weight" , "normal");
+        });
+
+        $("#btnItem").on('click', ()=>{
+            $("#con1").css("display", "none");
+            $("#con2").css("display", "none");
+            $("#con4").css("display", "none");
+            $("#con3").css("top", "0");
+            $("#con3").css("display", "block");
+
+            $(".nav-link").eq(0).css("color" , "blue");
+            $(".nav-link").eq(0).css("font-weight" , "normal");
+
+            $(".nav-link").eq(1).css("color" , "blue");
+            $(".nav-link").eq(1).css("font-weight" , "normal");
+
+            $(".nav-link").eq(2).css("color" , "black");
+            $(".nav-link").eq(2).css("font-weight" , "bold");
+
+            $(".nav-link").eq(3).css("color" , "blue");
+            $(".nav-link").eq(3).css("font-weight" , "normal");
+        });
+
+        $("#btnOrder").on('click', ()=>{
+            $("#con1").css("display", "none");
+            $("#con2").css("display", "none");
+            $("#con3").css("display", "none");
+            $("#con4").css("top", "0");
+            $("#con4").css("display" , "block");
+
+            $(".nav-link").eq(0).css("color" , "blue");
+            $(".nav-link").eq(0).css("font-weight" , "normal");
+
+            $(".nav-link").eq(1).css("color" , "blue");
+            $(".nav-link").eq(1).css("font-weight" , "normal");
+
+            $(".nav-link").eq(2).css("color" , "blue");
+            $(".nav-link").eq(2).css("font-weight" , "normal");
+
+            $(".nav-link").eq(3).css("color" , "black");
+            $(".nav-link").eq(3).css("font-weight" , "bold");
+        });
+    </script>
+
+</body>
+</html>

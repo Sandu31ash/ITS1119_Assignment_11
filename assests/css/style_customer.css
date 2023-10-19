@@ -1,0 +1,126 @@
+body{
+    background-color: #163052;
+}
+
+/*#imgCus{*/
+/*    position: absolute;*/
+/*    width: 30vw;*/
+/*    left: 30vw;*/
+/*    top: 12vh;*/
+/*}*/
+
+/*#tb1{*/
+/*    position: absolute;*/
+/*    !*top: 50vh;*!*/
+/*    bottom: 0;*/
+/*    width: 74vw;*/
+/*    right: 1vw;*/
+/*}*/
+
+/*#form1{*/
+/*    position: absolute;*/
+/*    bottom: 1vw;*/
+/*    left: 1vw;*/
+/*    width: 18vw;*/
+/*}*/
+
+#frame{
+    position: relative;
+    width: 23vw;
+    height: 80vh;
+    border: 1px solid white;
+    padding: 0.5vw;
+    top: 10vh;
+}
+
+#cusBtn>button{
+    position: relative;
+    left: 0;
+    right: 0;
+    margin: auto;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+/*#divBtn{*/
+/*    position: absolute;*/
+/*    !*display: inline;*!*/
+/*    width: fit-content;*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*    margin: auto;*/
+/*}*/
+
+#cusTb{
+    position: relative;
+    top: 18vh;
+    left: 2vw;
+}
+
+#cusForm{
+    position: relative;
+    top: 10vh;
+    padding: 0;
+}
+
+#cusId1{
+    color: white;
+    background-color: transparent;
+}
+
+#name1{
+    color: white;
+    background-color: transparent;
+}
+
+#contact{
+    color: white;
+    background-color: transparent;
+}
+
+#address{
+    color: white;
+    background-color: transparent;
+}
+
+label{
+    color: white;
+    background-color: transparent;
+}
+
+#tb1{
+    background-color: transparent;
+
+}
+
+input{
+    color: white;
+    width: 10vw;
+}
+
+.container>#imgCus{
+    opacity: 0;
+}
+
+.water{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 30vw;
+}
+
+
+@media all and (max-width: 992px){
+    #imgCus{
+        display: none;
+    }
+}
+
+@media all and (max-width: 768px){
+    .water{
+        width: 60vw;
+    }
+}
