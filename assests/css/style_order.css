@@ -34,14 +34,79 @@ form{
 
 #tot{
     color: white;
-    font-size: 2vw;
+    font-size: 25px;
     position: relative;
-    left: 5vw;
+    left: 50px;
+    padding: 0;
+    top: 5px;
+    margin: 0;
+    width: 130px;
+}
+
+
+#subTotal{
+    color: white;
+    background-color: transparent;
+    font-size: 25px;
+    font-family: cursive;
+    width: 150px;
+}
+
+#subTot{
+    color: white;
+    font-size: 25px;
+    position: relative;
+    /*left: 2vw;*/
+    padding: 0;
+    /*top: 0;*/
+    margin: 0;
+    width: 130px;
+}
+
+#subTotDiv{
+    position: relative;
+    top: 5px;
+    /*left: 11vw;*/
+    /*padding-left: 11vw;*/
+    width: 135px;
+}
+
+#divTot{
+    width: 200px;
+    /*padding-left: 2vw;*/
+}
+
+#divSubTot{
+    position: relative;
+    top: -10px;
+}
+
+#cusId3{
+    /*background-color: #03045e;*/
 }
 
 label{
     color: white;
     background-color: transparent;
+}
+
+#divDis{
+    position: relative;
+    top: -10px;
+}
+
+#divCash{
+    position: relative;
+    top: -10px;
+}
+
+#divBal{
+    position: relative;
+    top: -10px;
+}
+
+#imgOrder{
+    height: 49vh;
 }
 
 @media all and (max-width: 1200px){
@@ -54,6 +119,22 @@ label{
 @media all and (max-width: 992px){
     #imgOrder{
         display: none;
+    }
+}
+
+
+@media all and (max-width: 575px){
+    #totDiv{
+        top: -45px;
+        left: 100px;
+        width: 0;
+        height: 0;
+    }
+
+    #tot{
+        /*display: none;*/
+        top: -45px;
+        left: 100px;
     }
 }
 

@@ -1,7 +1,22 @@
 import {CustomerModel} from "/model/CustomerModel.js";
 import {customer_db} from "../db/db.js";
 
+
 // var customer_db = [];
+const sriLankanMobileNumberRegex = /^(\+94|0)[1-9][0-9]{8}$/;
+const regMobile = new RegExp(sriLankanMobileNumberRegex);
+
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-right',
+    iconColor: 'white',
+    customClass: {
+        popup: 'colored-toast'
+    },
+    showConfirmButton: false,
+    timer: 1500,
+    timerProgressBar: true
+})
 
 const loadCustomerData = ()=>{
 
@@ -20,9 +35,20 @@ const loadCustomerData = ()=>{
     });
 };
 
+
+$("#cusId1").val("C001");
+
+//reset button
+$("#cusBtn").eq(0).on('click', ()=>{
+    $("#name1").val("");
+    $("#contact").val("");
+    $("#address").val("");
+    generateCustomerId();
+});
+
 //////////////////////save//////////////////////////
 
-$("#cusBtn>button[type='button']").eq(2).on('click', ()=>{
+$("#cusBtn>button[type='button']").eq(3).on('click', ()=>{
     // $("#btnSave").on('click', ()=>{
     console.log("Save clicked");
 
@@ -40,29 +66,70 @@ $("#cusBtn>button[type='button']").eq(2).on('click', ()=>{
     //     address : address
     // };
 
-    let customer_obj = new CustomerModel(cus_id, name, contact, address);
+    if(cus_id) {
+        if (name) {
 
-    // save in the db
-    customer_db.push(customer_obj);
+            var contactValid = regMobile.test(contact);
 
-    console.log(`CusID : ${cus_id}\n Name: ${name}\n Contact: ${contact} Address: ${address}\n`);
+            if (contact && contactValid) {
+                if (address) {
+                    let customer_obj = new CustomerModel(cus_id, name, contact, address);
 
-    // let record = "<tr>\n" +
-    //     "<td class='cus_id1' scope=\"row\">" + cus_id + "</td>" +
-    //     "<td class='name1'>" + name + "</td>" +
-    //     "<td class='contact1'>" + contact + "</td>" +
-    //     "<td class='address1'>" + address + "</td>" +
-    //     "</tr>";
-    //
-    // $("#stu_tBody").append(record);
+                    // save in the db
+                    customer_db.push(customer_obj);
 
-    //clear
-    $("button[type='reset']").click();
+                    console.log(`CusID : ${cus_id}\n Name: ${name}\n Contact: ${contact} Address: ${address}\n`);
 
-    // load customer data
-    loadCustomerData();
+                    // let record = "<tr>\n" +
+                    //     "<td class='cus_id1' scope=\"row\">" + cus_id + "</td>" +
+                    //     "<td class='name1'>" + name + "</td>" +
+                    //     "<td class='contact1'>" + contact + "</td>" +
+                    //     "<td class='address1'>" + address + "</td>" +
+                    //     "</tr>";
+                    //
+                    // $("#stu_tBody").append(record);
 
-    console.log(customer_db);
+
+                     Toast.fire({
+                        icon: 'success',
+                        title: 'Saved'
+                    })
+
+                    // toastr.success('Saved')
+
+                    //clear
+                    $("button[type='reset']").click();
+
+                    // load customer data
+                    loadCustomerData();
+
+                    generateCustomerId();
+
+                    console.log(customer_db);
+                }else{
+                    Toast.fire({
+                        icon: 'error',
+                        title: 'Address is required'
+                    })
+                }
+            }else {
+                Toast.fire({
+                    icon: 'error',
+                    title: 'Invalid contact'
+                })
+            }
+        }else{
+            Toast.fire({
+                icon: 'error',
+                title: 'Name is required'
+            })
+        }
+    }else {
+        Toast.fire({
+            icon: 'error',
+            title: 'Invalid ID'
+        })
+    }
 
 });
 
@@ -77,7 +144,7 @@ const clear = () =>{
     $("#address").val("");
 }
 
-$("#cus_tBody").on("click" , "tr", function () {        //event dedication --> catches the runtime tr
+$("#cus_tBody").on("click" , "tr", function () {        //event dedication --> catches the runtime tr runtime rom ekta monahri , adala click wena kenaege parent ta event listner eka daala eeta passe kage udada aththatama click krnne kiyala 'tr' vidiyata denawa 'clicl' eken passe
 
     console.log("Row selected");
 
@@ -97,7 +164,7 @@ $("#cus_tBody").on("click" , "tr", function () {        //event dedication --> c
 
 //////////////////////update/////////////////////////
 
-$("#cusBtn>button[type='button']").eq(1).on("click", ()=> {
+$("#cusBtn>button[type='button']").eq(2).on("click", ()=> {
     console.log("Update clicked");
 
     let cus_id = $("#cusId1").val();
@@ -117,38 +184,154 @@ $("#cusBtn>button[type='button']").eq(1).on("click", ()=> {
     //     address : address
     // };
 
-    let customer_obj = new CustomerModel(cus_id, name, contact, address);
+    if(cus_id) {
+        if (name) {
 
-    //find item index
-    let index = customer_db.findIndex(item => item.cus_id === cus_id);
+            var contactValid = regMobile.test(contact);
 
-    //update item in the db
-    customer_db[index] = customer_obj;
+            if (contact && contactValid) {
+                if (address) {
 
-    // load customer data
-    loadCustomerData();
+                    let customer_obj = new CustomerModel(cus_id, name, contact, address);
 
-    //clear
-    $("#cusBtn>button[type='reset']").click();
+                    //find item index
+                    let index = customer_db.findIndex(item => item.cus_id === cus_id);
 
+                    //update item in the db
+                    customer_db[index] = customer_obj;
+
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Successfully Updated'
+                    })
+
+                    // load customer data
+                    loadCustomerData();
+
+                    generateCustomerId();
+
+                    //clear
+                    $("#cusBtn>button[type='reset']").click();
+                }else{
+                    Toast.fire({
+                        icon: 'error',
+                        title: 'Address is required'
+                    })
+                }
+            }else {
+                Toast.fire({
+                    icon: 'error',
+                    title: 'Invalid contact'
+                })
+            }
+        }else{
+            Toast.fire({
+                icon: 'error',
+                title: 'Name is required'
+            })
+        }
+    }else {
+        Toast.fire({
+            icon: 'error',
+            title: 'Invalid ID'
+        })
+    }
 });
 
 //delete
-$("#cusBtn>button[type='button']").eq(0).on("click", ()=> {
+$("#cusBtn>button[type='button']").eq(1).on("click", ()=> {
     console.log("Delete clicked");
     // $("#cus_tBody>tr").eq(row_index).remove();
 
-    let cus_id = $("#cusId1").val();
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
 
-    //find item index
-    let index = customer_db.findIndex(item => item.cus_id === cus_id);
+            let cus_id = $("#cusId1").val();
 
-    //delete item in the db
-    customer_db.splice(index,1);
+            //find item index
+            let index = customer_db.findIndex(item => item.cus_id === cus_id);
 
-    // load customer data
-    loadCustomerData();
+            //delete item in the db
+            customer_db.splice(index,1);
 
-    //clear
-    $("#cusBtn>button[type='reset']").click();
+            // load customer data
+            loadCustomerData();
+
+            console.log(customer_db);
+
+            Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+            )
+
+            //clear
+            $("#cusBtn>button[type='reset']").click();
+
+            generateCustomerId();
+
+
+        }
+    })
+
+});
+
+// document.addEventListener("DOMContentLoaded", function() {
+    // const customerIdInput = document.getElementById("cusId1");
+
+    // $("#cusId1").val("C000");
+
+    // const customerIdInput = $("#cusId1").val();
+
+    // Function to generate the customer ID
+
+
+    // Automatically generate the customer ID when the page loads
+    // generateCustomerId();
+// });
+
+// document.addEventListener("DOMContentLoaded", function() {
+//     // $("#cusId1").val("C000");
+//     generateCustomerId();
+// });
+
+function generateCustomerId() {
+    // const lastCustomerId = customerIdInput.value;
+
+    // const lastCustomerId = customer_db[length-1].cus_id;
+
+    let length = customer_db.length;
+
+    let lastCustomerId = customer_db[length-1].cus_id;
+
+    if (lastCustomerId === "") {
+        $("#cusId1").val("C001");
+    } else {
+        const number = parseInt(lastCustomerId.substr(1)) + 1;
+        let newId = "C" + number.toString().padStart(3, "0");
+        $("#cusId1").val(newId);
+    }
+
+    // $("#cusId1").val(lastCustomerId);
+    // $("#cusId1").val(lastCustomerId);
+    // console.log("generate");
+}
+
+$("#name1").on('keypress' , ()=> {
+    // if (e.key === "Enter" || e.keyCode === 13) {
+        $("#contact").focus();
+    // }
+
+});
+
+$("#contact").on('keypress' , ()=> {
+    $("#address").focus();
 });
