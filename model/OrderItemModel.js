@@ -1,16 +1,17 @@
-export class OrderModel{
-    constructor(iCode, item, price, qty, tot){
+export class OrderItemModel {
+    constructor(iCode, item, price, qty, tot, oCode){
         this.iCode = iCode;
         this.item = item;
         this.price = price;
         this.qty = qty;
         this.tot = tot;
+        this.oCode = oCode;
     }
 }
 
 //
 //
-// import {OrderModel} from "/model/OrderModel.js";
+// import {OrderItemModel} from "/model/OrderItemModel.js";
 // import {order_db, item_db, customer_db} from "../db/db.js";
 // import {CustomerModel} from "../model/CustomerModel";
 //
@@ -27,7 +28,7 @@ export class OrderModel{
 //     let tot = ($("#price3").val())*($("#qty3").val());
 //
 //     if (price) {
-//         let order_obj = new OrderModel(iCode, item, price, qty, tot);
+//         let order_obj = new OrderItemModel(iCode, item, price, qty, tot);
 //
 //         // save in the db
 //         order_db.push(order_obj);

@@ -301,3 +301,26 @@ $("#item2").on('keypress' , ()=> {
 $("#price2").on('keypress' , ()=> {
     $("#qty2").focus();
 });
+
+
+const addItemOption = ()=>{
+    const selectElement = document.getElementById("cusId3");
+    const newOption = document.createElement("option");
+    newOption.value = selectElement.options.length + 1;
+    newOption.text = "Option " + newOption.value;
+    selectElement.appendChild(newOption);
+}
+
+// const deleteCusOption = (index) => {
+//     const selectElement = document.getElementById("cusId3");
+//
+//     const indexToRemove = index;
+//
+//     // Specify the index of the option you want to remove
+//     // const indexToRemove = 1; // Replace with the index of the option to remove
+//
+//     // Check if the index is valid
+//     if (indexToRemove >= 0 && indexToRemove < selectElement.options.length) {
+//         selectElement.options[indexToRemove].remove();
+//     }
+// }

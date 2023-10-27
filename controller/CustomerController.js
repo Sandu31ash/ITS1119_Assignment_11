@@ -1,7 +1,6 @@
 import {CustomerModel} from "/model/CustomerModel.js";
 import {customer_db} from "../db/db.js";
 
-
 // var customer_db = [];
 const sriLankanMobileNumberRegex = /^(\+94|0)[1-9][0-9]{8}$/;
 const regMobile = new RegExp(sriLankanMobileNumberRegex);
@@ -34,7 +33,6 @@ const loadCustomerData = ()=>{
 
     });
 };
-
 
 $("#cusId1").val("C001");
 
@@ -104,6 +102,8 @@ $("#cusBtn>button[type='button']").eq(3).on('click', ()=>{
                     loadCustomerData();
 
                     generateCustomerId();
+
+                    addCusOption();
 
                     console.log(customer_db);
                 }else{
@@ -259,11 +259,15 @@ $("#cusBtn>button[type='button']").eq(1).on("click", ()=> {
             //find item index
             let index = customer_db.findIndex(item => item.cus_id === cus_id);
 
+            // const index = customer_db.indexOf(cus_id);
+
             //delete item in the db
             customer_db.splice(index,1);
 
             // load customer data
             loadCustomerData();
+
+            deleteCusOption(index);
 
             console.log(customer_db);
 
@@ -334,4 +338,32 @@ $("#name1").on('keypress' , ()=> {
 
 $("#contact").on('keypress' , ()=> {
     $("#address").focus();
+});
+
+const addCusOption = ()=>{
+    const selectElement = document.getElementById("cusId3");
+    const newOption = document.createElement("option");
+    newOption.value = selectElement.options.length + 1;
+    newOption.text = "Option " + newOption.value;
+    selectElement.appendChild(newOption);
+}
+
+const deleteCusOption = (index) => {
+    const selectElement = document.getElementById("cusId3");
+
+    const indexToRemove = index;
+
+    // Specify the index of the option you want to remove
+    // const indexToRemove = 1; // Replace with the index of the option to remove
+
+    // Check if the index is valid
+    if (indexToRemove >= 0 && indexToRemove < selectElement.options.length) {
+        selectElement.options[indexToRemove].remove();
+    }
+}
+
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Tab") {
+        event.preventDefault();
+    }
 });

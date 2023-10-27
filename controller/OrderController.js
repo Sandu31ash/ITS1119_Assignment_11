@@ -1,4 +1,4 @@
-import {OrderModel} from "/model/OrderModel.js";
+import {OrderItemModel} from "/model/OrderItemModel.js";
 import {order_db, order_item_db, item_db, customer_db} from "../db/db.js";
 
 
@@ -34,6 +34,11 @@ const loadOItemData = ()=>{
     });
 };
 
+const currentDate = new Date().toISOString().split('T')[0];
+
+// Set the value of the date input to the current date
+document.getElementById("date").value = currentDate;
+
 //////////////////////Add to cart////////////////////////
 
 $("#orderBtnCart>button[type='button']").eq(0).on('click', ()=>{
@@ -45,25 +50,26 @@ $("#orderBtnCart>button[type='button']").eq(0).on('click', ()=>{
     // $("#cash").val("");
     // $("#balance").val("");
 
+    let oCode = $("#code3").val();
     let iCode = $("#iCode").val();
     let item = $("#item3").val();
     let price = $("#price3").val();
     let qty = $("#qty3").val();
     let tot = ($("#price3").val())*($("#qty3").val());
 
-    console.log(`Item code : ${iCode}\n item: ${item}\n Unit price: ${price} Qty: ${qty}\n Unit price: ${price} Tot: ${tot}`);
+    console.log(`Order code : ${oCode}\n Item code : ${iCode}\n item: ${item}\n Unit price: ${price} Qty: ${qty}\n Unit price: ${price} Tot: ${tot}`);
 
     let qtyOnH = $("#qty2").val();
     console.log("QtyOnH"+qtyOnH);
 
     // if(qty<qtyOnH && qty>=1){
 
-        let order_obj = new OrderModel(iCode, item, price, qty, tot);
+        let order_obj = new OrderItemModel(iCode, item, price, qty, tot, oCode);
 
         // save in the db
         order_item_db.push(order_obj);
 
-        console.log(`Item code : ${iCode}\n item: ${item}\n Unit price: ${price} Qty: ${qty}\n Unit price: ${price} Tot: ${tot}`);
+        console.log(`Order code : ${oCode}\n Item code : ${iCode}\n item: ${item}\n Unit price: ${price} Qty: ${qty}\n Unit price: ${price} Tot: ${tot}`);
 
         $("#tot").val(tot);
 
@@ -71,6 +77,8 @@ $("#orderBtnCart>button[type='button']").eq(0).on('click', ()=>{
             icon: 'success',
             title: 'Added to cart'
         })
+
+        console.log("Order item db oCode"+order_item_db[0].oCode);
 
         loadOItemData();
 
@@ -113,7 +121,7 @@ $("#orderBtnCart>button[type='button']").eq(0).on('click', ()=>{
 
 //     myInput.addEventListener("change", function () {
 
-$("#disc").on("input", function() {
+    $("#disc").on("input", function() {
 
         let disc = $("#disc").val();
         console.log("DiscountS" + disc);
@@ -138,6 +146,56 @@ $("#orderBtnPur>button[type='button']").eq(0).on('click', ()=>{
 
 
     //save order details in the order_db
+
+    let oCode = $("#code3").val();
+    let date = $("#date").val();
+    let cusId = $("#cusId3").val();
+    let cusName = $("#cusName3").val();
+    let tota = parseFloat($("#tot").val());
+    let subTota = $("#subTot").val();
+    let discounta = $("#disc").val();
+    let casha = $("#cash").val();
+    let balancea = $("#balance").val();
+
+    // if(qty<qtyOnH && qty>=1){
+
+    let orderD_obj = new OrderItemModel(oCode, date, cusId, cusName, tota, subTota, discounta, casha, balancea);
+
+    // save in the db
+    order_db.push(orderD_obj);
+
+    console.log(`Order code : ${oCode}\n Date : ${date}\n CustomerId: ${cusId}\n CustomerName: ${cusName} Tot: ${tot}\n SubTot: ${subTota} Discount: ${discounta} Cash: ${casha} Balance: ${balancea}`);
+
+    // $("#tot").val(tot);
+
+    Toast.fire({
+        icon: 'success',
+        title: 'Added to cart'
+    })
+
+    console.log("Order item db oCode"+order_item_db[0].oCode);
+
+    loadOItemData();
+
+    generateOrderCode();
+
+    // $("#code3").val("");
+    // $("#date").val("");
+    // $("#cusId3").val("");
+    $("#cusName3").val("");
+    // $("#iCode").val("");
+    // $("#item3").val("");
+    // $("#").val("");
+
+    //clear
+    $("button[type='reset']").click();
+    // $("#orderBtnCart>button[type='reset']").eq(0).click();
+    // }else{
+    //     Toast.fire({
+    //         icon: 'error',
+    //         title: 'Enter the qty'
+    //     })
+    // }
 
 
 });
