@@ -99,6 +99,8 @@ $("#itemBtn>button[type='button']").eq(3).on('click', ()=>{
 
                     generateItemCode();
 
+                    addItemOption();
+
                     console.log(item_db);
                 }else{
                     Toast.fire({
@@ -252,6 +254,8 @@ $("#itemBtn>button[type='button']").eq(1).on("click", ()=> {
             // load item data
             loadItemData();
 
+            // deleteItemOption();
+
             Swal.fire(
                 'Deleted!',
                 'Your file has been deleted.',
@@ -304,7 +308,7 @@ $("#price2").on('keypress' , ()=> {
 
 
 const addItemOption = ()=>{
-    const selectElement = document.getElementById("cusId3");
+    const selectElement = document.getElementById("iCode");
     const newOption = document.createElement("option");
     newOption.value = selectElement.options.length + 1;
     newOption.text = "Option " + newOption.value;

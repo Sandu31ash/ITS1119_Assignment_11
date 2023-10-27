@@ -64,6 +64,12 @@ $("#orderBtnCart>button[type='button']").eq(0).on('click', ()=>{
 
     // if(qty<qtyOnH && qty>=1){
 
+    const isExist = order_item_db.includes($("#iCode").val());
+
+    if(isExist === false) {
+
+        console.log("Not Exists");
+
         let order_obj = new OrderItemModel(iCode, item, price, qty, tot, oCode);
 
         // save in the db
@@ -78,7 +84,7 @@ $("#orderBtnCart>button[type='button']").eq(0).on('click', ()=>{
             title: 'Added to cart'
         })
 
-        console.log("Order item db oCode"+order_item_db[0].oCode);
+        console.log("Order item db oCode" + order_item_db[0].oCode);
 
         loadOItemData();
 
@@ -87,29 +93,40 @@ $("#orderBtnCart>button[type='button']").eq(0).on('click', ()=>{
         //clear
         $("button[type='reset']").click();
         // $("#orderBtnCart>button[type='reset']").eq(0).click();
-    // }else{
-    //     Toast.fire({
-    //         icon: 'error',
-    //         title: 'Enter the qty'
-    //     })
-    // }
+        // }else{
+        //     Toast.fire({
+        //         icon: 'error',
+        //         title: 'Enter the qty'
+        //     })
+        // }
 
-    // $("#order_tBody").append("<tr>\n" +
-    //     "<td class='icode1' scope=\"row\">" + iCode + "</td>" +
-    //     "<td class='item1'>" + item + "</td>" +
-    //     "<td class='price1'>" + price + "</td>" +
-    //     "<td class='qty1'>" + qty + "</td>" +
-    //     "<td class='tot1'>" + tot + "</td>" +
-    //     "</tr>"
-    // );
+        // $("#order_tBody").append("<tr>\n" +
+        //     "<td class='icode1' scope=\"row\">" + iCode + "</td>" +
+        //     "<td class='item1'>" + item + "</td>" +
+        //     "<td class='price1'>" + price + "</td>" +
+        //     "<td class='qty1'>" + qty + "</td>" +
+        //     "<td class='tot1'>" + tot + "</td>" +
+        //     "</tr>"
+        // );
 
-    $("#tot").val(tot);
+        $("#tot").val(tot);
 
-    $("#subTot").val(tot);
+        $("#subTot").val(tot);
 
-    //clear
-    $("button[type='reset']").click();
-    $("#orderBtnCart>button[type='reset']").eq(0).click();
+        //clear
+        $("button[type='reset']").click();
+        $("#orderBtnCart>button[type='reset']").eq(0).click();
+
+    }else {
+        // let qty = $("#qty3").val();
+        //
+        // let index = order_item_db.findIndex(item => item.iCode === iCode);
+        //
+        // let qtyOld = order_item_db[index].qty;
+
+        console.log("Exists");
+
+    }
 
 });
 
@@ -189,6 +206,8 @@ $("#orderBtnPur>button[type='button']").eq(0).on('click', ()=>{
 
     //clear
     $("button[type='reset']").click();
+    $("#oderBtnPur>button[type='reset']").click();
+
     // $("#orderBtnCart>button[type='reset']").eq(0).click();
     // }else{
     //     Toast.fire({
