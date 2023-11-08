@@ -1,8 +1,8 @@
 import {OrderItemModel} from "/model/OrderItemModel.js";
 import {OrderModel} from "/model/OrderModel.js";
-import {order_db, order_item_db, item_db, customer_db} from "../db/db.js";
+import {order_db, item_db, customer_db} from "../db/db.js";
 import {ItemModel} from "../model/ItemModel.js";
-// import {ItemModel} from "../model/ItemModel";
+var order_item_db = [];
 
 
 const Toast = Swal.mixin({
@@ -109,7 +109,7 @@ $("#orderBtnCart>button[type='button']").eq(0).on('click', ()=>{
         if(qty_on_hand>=qty){
             console.log("Stock available, add to cart");
 
-            if (index === -1 && indexO === -1){
+            if (index === -1){
                 console.log("Not yet in db, add as a new item");
 
                 let order_item_obj = new OrderItemModel(iCode, item, price, qty, tot, oCode);
@@ -214,9 +214,38 @@ $("#orderBtnCart>button[type='button']").eq(0).on('click', ()=>{
                     })
                 }
 
-            }else if(indexO !== -1){
-
-            }
+             }
+            //else if(indexO !== -1){
+            //     console.log("Not yet in db & new oCode, add as a new item");
+            //
+            //     let order_item_obj = new OrderItemModel(iCode, item, price, qty, tot, oCode);
+            //
+            //     // save in the db
+            //     order_item_db.push(order_item_obj);
+            //
+            //     console.log(`Order code : ${oCode}\n Item code : ${iCode}\n item: ${item}\n Unit price: ${price} Qty: ${qty}\n Unit price: ${price} Tot: ${tot}`);
+            //
+            //
+            //     Toast.fire({
+            //         icon: 'success',
+            //         title: 'Added to cart'
+            //     })
+            //
+            //     console.log("Order item db oCode" + order_item_db[0].oCode);
+            //
+            //     $("#btnResetAdd").click();
+            //
+            //     loadOItemData();
+            //
+            //     const totArray = order_item_db.map(item => item.tot); // Extract the 'tot' values into a separate array
+            //     const sumTot = totArray.reduce((sum, tot) => sum + tot, 0);
+            //
+            //     console.log(sumTot);
+            //
+            //     $("#tot").val(sumTot);
+            //
+            //     $("#subTot").val(sumTot);
+            // }
         }else {
             console.log("Out of stock");
 
@@ -428,8 +457,6 @@ $("#orderBtnPur>button[type='button']").eq(0).on('click', ()=>{
 
                     // loadOItemData();
                     //
-                    // updateItemData();
-                    //
                     // $("#order_tBody").empty();
                     //
                     // generateOrderCode();
@@ -450,6 +477,8 @@ $("#orderBtnPur>button[type='button']").eq(0).on('click', ()=>{
 
                     loadOrderData();
 
+                    updateItemData();
+
                     generateOrderCode();
                     $("#cusId3").val("");
                     $("#cusName3").val("");
@@ -467,16 +496,9 @@ $("#orderBtnPur>button[type='button']").eq(0).on('click', ()=>{
                     //     })
                     // }
 
-                    // for (let i=0; i<order_item_db.length; i++){
-                    //     order_item_db[i].iCodeode = "";
-                    //     order_item_db[i].item = "";
-                    //     order_item_db[i].price = 0;
-                    //     order_item_db[i].qty = 0;
-                    //     order_item_db[i].tot = 0;
-                    //     order_item_db[i].oCode = "";
-                    // }
+                    order_item_db = [];
 
-                    // order_item_db = [];
+                    // console.log(order_item_db);
 
                 }else {
                     Toast.fire({
@@ -542,10 +564,11 @@ const updateItemData = ()=>{
         let item = order_item_db[i].item;
         let price = order_item_db[i].price;
         let qty = order_item_db[i].qty;
-        let l_index = item_db.findIndex(item => item.iCode === iCode);
+        console.log(item_db);
+        let l_index = item_db.findIndex(item => item.code === iCode);
         let old_qty = item_db[l_index].qty;
-        console.log("11-04--ind"+l_index);
-        console.log("11-04--old");
+        // console.log("11-04--ind"+l_index);
+        // console.log("11-04--old");
         let updated_qty = old_qty-qty;
 
         let item_obj = new ItemModel(iCode, item, price, updated_qty);

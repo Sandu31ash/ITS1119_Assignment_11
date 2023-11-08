@@ -391,9 +391,6 @@ const deleteCusOption = (index) => {
 
     const indexToRemove = index;
 
-    // Specify the index of the option you want to remove
-    // const indexToRemove = 1; // Replace with the index of the option to remove
-
     // Check if the index is valid
     if (indexToRemove >= 0 && indexToRemove < selectElement.options.length) {
         selectElement.options[indexToRemove].remove();

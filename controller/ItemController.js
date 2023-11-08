@@ -259,7 +259,7 @@ $("#itemBtn>button[type='button']").eq(1).on("click", ()=> {
             // load item data
             loadItemData();
 
-            deleteItemOption();
+            deleteItemOption(index);
 
             Swal.fire(
                 'Deleted!',
