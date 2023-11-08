@@ -30,6 +30,9 @@ const loadItemData = ()=>{
     });
 };
 
+$("#itemSec").on('click' , ()=>{
+    loadItemData();
+});
 
 $("#code2").val("I001");
 
@@ -64,11 +67,12 @@ $("#itemBtn>button[type='button']").eq(3).on('click', ()=>{
     //clear
     // $("#itemBtn>button[type='reset']").click();
 
+    let index = item_db.findIndex(item => item.code === code);
 
-    if(code) {
+    if(code && index === -1) {
         if (item) {
-            if (price) {
-                if (qty) {
+            if (price && price>0) {
+                if (qty && qty>0) {
                     let item_obj = new ItemModel(code, item, price, qty);
 
                     // save in the db
@@ -123,7 +127,7 @@ $("#itemBtn>button[type='button']").eq(3).on('click', ()=>{
     }else {
         Toast.fire({
             icon: 'error',
-            title: 'Invalid Item Code'
+            title: 'Item Code Already Exists'
         })
     }
 
@@ -155,6 +159,7 @@ $("#item_tBody").on("click" , "tr", function () {        //event dedication --> 
     $("#qty2").val(qty);
 });
 
+
 //////////////////////update/////////////////////////
 
 $("#itemBtn>button[type='button']").eq(2).on("click", ()=> {
@@ -176,8 +181,8 @@ $("#itemBtn>button[type='button']").eq(2).on("click", ()=> {
 
     if(code) {
         if (item) {
-            if (price) {
-                if (qty) {
+            if (price && price>0) {
+                if (qty>0) {
                     let item_obj = new ItemModel(code, item, price, qty);
 
                     //find item index
@@ -232,6 +237,8 @@ $("#itemBtn>button[type='button']").eq(1).on("click", ()=> {
     // console.log("Delete clicked");
     // $("#item_tBody>tr").eq(row_index).remove();
 
+    let code = $("#code2").val();
+
     Swal.fire({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
@@ -243,8 +250,6 @@ $("#itemBtn>button[type='button']").eq(1).on("click", ()=> {
     }).then((result) => {
         if (result.isConfirmed) {
 
-            let code = $("#code2").val();
-
             //find item index
             let index = item_db.findIndex(item => item.code === code);
 
@@ -254,7 +259,7 @@ $("#itemBtn>button[type='button']").eq(1).on("click", ()=> {
             // load item data
             loadItemData();
 
-            // deleteItemOption();
+            deleteItemOption();
 
             Swal.fire(
                 'Deleted!',
@@ -272,6 +277,33 @@ $("#itemBtn>button[type='button']").eq(1).on("click", ()=> {
 });
 
 
+////////////////////////Search///////////////////////////
+
+$('#item_search').on('input', () => {
+
+    console.log("Input reading");
+
+    let search_term = $('#item_search').val();
+
+    if(search_term){
+        let results = item_db.filter((item) =>
+
+            item.item.toLowerCase().startsWith(search_term.toLowerCase())
+
+        );
+
+        console.log(results);
+
+        $('#item_tBody').empty();
+        results.map((item, index) => {
+            let tbl_row = `<tr><td class="item_code">${item.code}</td><td class="item">${item.item}</td><td class="item_price">${item.price}</td><td class="item_qty">${item.qty}</td></tr>`;
+            $('#item_tBody').append(tbl_row);
+        });
+    }else {
+        loadItemData();
+    }
+
+});
 
 function generateItemCode() {
     // const lastCustomerId = customerIdInput.value;
@@ -315,16 +347,12 @@ const addItemOption = ()=>{
     selectElement.appendChild(newOption);
 }
 
-// const deleteCusOption = (index) => {
-//     const selectElement = document.getElementById("cusId3");
-//
-//     const indexToRemove = index;
-//
-//     // Specify the index of the option you want to remove
-//     // const indexToRemove = 1; // Replace with the index of the option to remove
-//
-//     // Check if the index is valid
-//     if (indexToRemove >= 0 && indexToRemove < selectElement.options.length) {
-//         selectElement.options[indexToRemove].remove();
-//     }
-// }
+const deleteItemOption = (index) => {
+    const selectElement = document.getElementById("iCode");
+
+    const indexToRemove = index;
+
+    if (indexToRemove >= 0 && indexToRemove < selectElement.options.length) {
+        selectElement.options[indexToRemove].remove();
+    }
+}

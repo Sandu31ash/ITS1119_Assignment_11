@@ -64,7 +64,20 @@ $("#cusBtn>button[type='button']").eq(3).on('click', ()=>{
     //     address : address
     // };
 
-    if(cus_id) {
+
+    let index = customer_db.findIndex(item => item.cus_id === cus_id);
+    // const isExist = customer_db.includes(cus_id);
+    console.log("Index" +index);
+
+    // if(index){
+    //     console.log(" Index Exists");
+    // }else {
+    //     console.log("Index Not Exists");
+    // }
+
+    if(cus_id && index === -1) {
+        console.log(" Not Exists");
+
         if (name) {
 
             var contactValid = regMobile.test(contact);
@@ -86,7 +99,6 @@ $("#cusBtn>button[type='button']").eq(3).on('click', ()=>{
                     //     "</tr>";
                     //
                     // $("#stu_tBody").append(record);
-
 
                      Toast.fire({
                         icon: 'success',
@@ -127,7 +139,7 @@ $("#cusBtn>button[type='button']").eq(3).on('click', ()=>{
     }else {
         Toast.fire({
             icon: 'error',
-            title: 'Invalid ID'
+            title: 'ID already exists'
         })
     }
 
@@ -144,8 +156,7 @@ const clear = () =>{
     $("#address").val("");
 }
 
-$("#cus_tBody").on("click" , "tr", function () {        //event dedication --> catches the runtime tr runtime rom ekta monahri , adala click wena kenaege parent ta event listner eka daala eeta passe kage udada aththatama click krnne kiyala 'tr' vidiyata denawa 'clicl' eken passe
-
+$("#cus_tBody").on("click" , "tr", function () {
     console.log("Row selected");
 
     row_index = $(this).index();
@@ -242,6 +253,7 @@ $("#cusBtn>button[type='button']").eq(2).on("click", ()=> {
 $("#cusBtn>button[type='button']").eq(1).on("click", ()=> {
     console.log("Delete clicked");
     // $("#cus_tBody>tr").eq(row_index).remove();
+    let cus_id = $("#cusId1").val();
 
     Swal.fire({
         title: 'Are you sure?',
@@ -253,8 +265,6 @@ $("#cusBtn>button[type='button']").eq(1).on("click", ()=> {
         confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
         if (result.isConfirmed) {
-
-            let cus_id = $("#cusId1").val();
 
             //find item index
             let index = customer_db.findIndex(item => item.cus_id === cus_id);
@@ -282,11 +292,39 @@ $("#cusBtn>button[type='button']").eq(1).on("click", ()=> {
 
             generateCustomerId();
 
-
         }
     })
 
 });
+
+////////////////////////Search///////////////////////////
+
+$('#cus_search').on('input', () => {
+
+    console.log("Input reading");
+
+    let search_term = $('#cus_search').val();
+
+    if(search_term){
+        let results = customer_db.filter((item) =>
+
+            item.name.toLowerCase().startsWith(search_term.toLowerCase()) || item.contact.startsWith(search_term)
+
+    );
+
+        console.log(results);
+
+        $('#cus_tBody').empty();
+        results.map((item, index) => {
+            let tbl_row = `<tr><td class="cus_id1">${item.cus_id}</td><td class="name1">${item.name}</td><td class="contact1">${item.contact}</td><td class="address1">${item.address}</td></tr>`;
+            $('#cus_tBody').append(tbl_row);
+        });
+    }else {
+        loadCustomerData();
+    }
+
+});
+
 
 // document.addEventListener("DOMContentLoaded", function() {
     // const customerIdInput = document.getElementById("cusId1");

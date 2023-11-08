@@ -129,6 +129,12 @@
                 <!--            </div>-->
             </div>
             <div id="cusTb" class="col col-xxl-8 col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
+
+                <div class="form-floating mb-5">
+                    <input type="text" class="form-control mb-3" id="cus_search" placeholder="Search by First Name" style="color: white; background-color: transparent">
+                    <label for="cus_search">Search Customer</label>
+                </div>
+
                 <table class="table table-bordered table-hover table-striped table-primary" id="tb1">
                     <thead>
                     <tr>
@@ -187,7 +193,8 @@
                 <form action="" method="post" target="_blank" id="itemForm">
                     <br><br>
                     <div class="form-floating mb-5">
-                        <input type="text" class="form-control" id="code2" placeholder="Item Code">
+<!--                        <input type="text" class="form-control" id="code" placeholder="Item Code">-->
+                        <input class="form-control" type="text" id="code2" value="Item Code" aria-label="readonly input example" readonly>
                         <label for="code2">Item Code</label>
                     </div>
                     <div class="form-floating mb-5">
@@ -212,6 +219,12 @@
                 <!--            </div>-->
             </div>
             <div id="divTb2" class="col col-xxl-8 col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
+
+                <div class="form-floating mb-5">
+                    <input type="text" class="form-control mb-3" id="item_search" placeholder="Search by item" style="color: white; background-color: transparent; width: 250px">
+                    <label for="item_search">Search item</label>
+                </div>
+
                 <table class="table table-bordered table-hover table-striped table-primary">
                     <thead>
                     <tr>
@@ -266,7 +279,7 @@
             <form action="" method="post" target="_blank" id="orderForm">
                 <h6 style="color: white">Invoice details</h6>
                 <div class="form-floating mb-2">
-                    <input type="text" class="form-control" id="code3" placeholder="Order code">
+                    <input class="form-control" type="text" id="code3" value="Order Code" aria-label="readonly input example" readonly>
                     <label for="code3">Order Code</label>
                 </div>
                 <div class="form-floating mb-2">
@@ -321,12 +334,12 @@
                     <label for="iCode">Item Code</label>
                 </div>
                 <div class="form-floating mb-2">
-                    <input class="form-control" type="text" id="item3" value="Item" aria-label="readonly input example" readonly>
+                    <input class="form-control" type="text" id="item3" placeholder="Item" aria-label="readonly input example" readonly>
 <!--                    <input type="text" class="form-control" id="item3" placeholder="Item">-->
                     <label for="item3">Item</label>
                 </div>
                 <div class="form-floating mb-2">
-                    <input class="form-control" type="text" id="price3" value="Price" aria-label="readonly input example" readonly>
+                    <input class="form-control" type="text" id="price3" placeholder="Price" aria-label="readonly input example" readonly>
 <!--                    <input type="number" class="form-control form-control-sm" id="price3" placeholder="Unit Price">-->
                     <label for="price3">Unit Price</label>
                 </div>
@@ -335,7 +348,7 @@
                     <label for="qty3">Qty</label>
                 </div>
                 <div id="orderBtnCart" class="mt-3 mb-4">
-                    <button type="reset" class="btn btn-outline-light btn-sm">Reset</button>
+                    <button type="reset" id="btnResetAdd" class="btn btn-outline-light btn-sm">Reset</button>
                     <button type="button" class="btn btn-outline-light btn-sm">Add to cart</button>
                 </div>
 
@@ -374,11 +387,12 @@
                     <label for="cash">Cash</label>
                 </div>
                 <div class="form-floating mb-0" id="divBal">
-                    <input type="text" class="form-control" id="balance" placeholder="Balance">
+<!--                    <input type="text" class="form-control" id="balnce" placeholder="Balance">-->
+                    <input class="form-control" type="text" id="balance" placeholder="Balance" aria-label="readonly input example" readonly>
                     <label for="balance">Balance</label>
                 </div>
                 <div id="orderBtnPur" class="mt-1 mb-4">
-                    <button type="reset" class="btn btn-outline-light btn-sm">Reset</button>
+                    <button type="reset" id="btnReset" class="btn btn-outline-light btn-sm">Reset</button>
                     <button type="button" class="btn btn-outline-light btn-sm">Purchase</button>
                 </div>
             </form>
@@ -388,7 +402,7 @@
     </div>
 
 
-    <table class="table table-bordered table-hover table-striped table-primary" id="tb3">
+    <table class="table table-bordered table-hover table-striped table-primary mt-5" id="tb3">
         <thead>
         <tr>
             <th scope="col">Item code</th>
@@ -399,29 +413,31 @@
         </tr>
         </thead>
         <tbody id="order_tBody">
-<!--        <tr>-->
-<!--            <th scope="row">I001</th>-->
-<!--            <td>Latte</td>-->
-<!--            <td>Otto</td>-->
-<!--            <td>@mdo</td>-->
-<!--            <td>2500</td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <th scope="row">I002</th>-->
-<!--            <td>Cappucino</td>-->
-<!--            <td>Thornton</td>-->
-<!--            <td>@fat</td>-->
-<!--            <td>1800</td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <th scope="row">I003</th>-->
-<!--            <td>Cafe</td>-->
-<!--            <td>USA</td>-->
-<!--            <td>@twitter</td>-->
-<!--            <td>1500</td>-->
-<!--        </tr>-->
         </tbody>
     </table>
+
+        <table class="table table-bordered table-hover table-striped table-primary" id="tb4">
+            <thead>
+            <tr>
+                <th scope="col">Order Code</th>
+                <th scope="col">Date</th>
+                <th scope="col">Cus ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Tot</th>
+                <th scope="col">Disc</th>
+                <th scope="col">Sub Tot</th>
+                <th scope="col">Cash</th>
+                <th scope="col">Bal</th>
+            </tr>
+            </thead>
+            <tbody id="orderD_tBody">
+            </tbody>
+        </table>
+
+        <div class="form-floating mb-5">
+            <input type="text" class="form-control mb-3" id="order_search" placeholder="Search by First Name" style="color: white; background-color: transparent; width: 225px;">
+            <label for="order_search">Search Order</label>
+        </div>
 
     </div>
     </div>

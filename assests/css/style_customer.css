@@ -145,6 +145,9 @@ input{
     width: 30vw;
 }
 
+#cus_search{
+    width: 250px;
+}
 
 @media all and (max-width: 992px){
     #imgCus{
