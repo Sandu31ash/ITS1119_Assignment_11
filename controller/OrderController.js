@@ -675,7 +675,7 @@ $('#order_search').on('input', () => {
     if(search_term){
         let results = order_db.filter((item) =>
 
-            item.cusName.toLowerCase().startsWith(search_term.toLowerCase()) || item.oCode.toLowerCase().startsWith(search_term) || item.date.startsWith(search_term)
+            item.cusName.toLowerCase().startsWith(search_term.toLowerCase()) || item.oCode.toLowerCase().startsWith(search_term) || item.date.startsWith(search_term) || item.cusId.toLowerCase().startsWith(search_term)
 
         );
 
